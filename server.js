@@ -10,8 +10,6 @@ server.use(bodyParser.json({limit: '50mb'}));
 server.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 server.use(cors());
 
-
-console.log(process.env);
 const port = process.env.PORT || 5000
 
 mongoose.Promise = global.Promise;
