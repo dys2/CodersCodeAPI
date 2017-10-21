@@ -38,7 +38,7 @@ module.exports = {
       _id: req.user._id }
     }),
   updateUser: (req, res) => {
-    if (req.body.password) req.body.password = await passwordHash(req.body.password);
+    if (req.body.password) req.body.password = passwordHash(req.body.password);
     User.findByIdAndUpdate(req.user._id, req.body, { new: true, select: 'username email password liked picture _id' })
       .exec((err, user) => err ? res.status(422).json(err) : res.send({ user }));
   },
