@@ -23,7 +23,10 @@ const UserSchema = new mongoose.Schema({
     default: Date.now()
   },
   liked: [mongoose.Schema.Types.ObjectId],
-  picture: String
+  picture: {
+    type: String,
+    default: 'https://support.plymouth.edu/kb_images/Yammer/default.jpeg'
+  }
 });
 
 //must bind this to use arrow function otherwise use function 
