@@ -4,7 +4,9 @@ const getTokenForUser = require('../services/token');
 
 module.exports = {
   createUser: (req, res) => {
-    const { username, email, password, picture } = req.body;
+    const { username, email, password } = req.body;
+    const user = { username, email, password };
+    if (req.body.picture) user[picture] = req.body.picture;
     const newUser = new User({ username, email, password, picture });
     newUser.save()
       .then(user => res.send({
