@@ -13,7 +13,7 @@ module.exports = (server) => {
   server.route('/post')
     .post(requireAuth, postController.createPost);
   server.route('/post/:id')
-    .get(requireAuth, postController.getPost)
+    .get(postController.getPost)
     .delete(requireAuth, postController.deletePost);
   server.route('/comment/:id')
     .put(requireAuth, postController.addComment)
