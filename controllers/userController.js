@@ -7,7 +7,7 @@ module.exports = {
     const { username, email, password } = req.body;
     const user = { username, email, password };
     if (req.body.picture) user[picture] = req.body.picture;
-    const newUser = new User({ username, email, password, picture });
+    const newUser = new User(user);
     newUser.save()
       .then(user => res.send({
         user: {
