@@ -1,8 +1,11 @@
 const Post = require('../models/postModel');
 const User = require('../models/userModel');
+const cloudinary = require('cloudinary');
+
 
 module.exports = {
-  createPost: (req, res) => {
+  createPost: async (req, res) => {
+    await cloudinary.uploader.upload(req.body.picture, res => req.body.picture = res.url);
     const { title, content, author, picture, tags } = req.body;
     const newPost = new Post({ title, content, author, picture, tags });
     newPost.save((err, post) => err ? res.status(422).json(err) : res.send({ id: post._id }));
