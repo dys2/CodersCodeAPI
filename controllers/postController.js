@@ -19,7 +19,7 @@ module.exports = {
   getPosts: (req, res) => {
     Post.find({})
       .populate('author comments.author', 'username picture')
-      .exec((err, posts) => err ? res.status(422).json(err) : res.send({ posts: posts.reverse() }));
+      .exec((err, posts) => err ? res.status(422).json(err) : res.send({ posts }));
   },
   getUsersPosts: (req, res) => {
     const { author } = req.body;
